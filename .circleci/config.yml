@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  python: circleci/python@2.0.3
+
+workflows:
+  test:
+    jobs:
+      - python/test:
+          pkg-manager: pip-dist
+          pip-dependency-file: requirements-dev.txt
+          # unrelated to anything else, just making sure
+          # the pip and poetry build jobs don't collide their cache
+          cache-version: v100
